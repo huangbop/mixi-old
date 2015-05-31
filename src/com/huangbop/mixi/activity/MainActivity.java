@@ -4,10 +4,12 @@ import com.huangbop.mixi.R;
 import com.huangbop.mixi.R.id;
 import com.huangbop.mixi.R.layout;
 import com.huangbop.mixi.R.menu;
+import com.huangbop.mixi.fragment.MenuFragment;
 import com.huangbop.mixi.utils.InjectView;
 import com.huangbop.mixi.utils.Injector;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.view.Menu;
@@ -18,15 +20,21 @@ public class MainActivity extends Activity {
 	
 	@InjectView(R.id.slidingpane_layout)
 	private SlidingPaneLayout slidingpanelayout;
-
+	
+	private MenuFragment menuFragment;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
 		Injector.get(this).inject();
+
+		menuFragment = new MenuFragment();
 		
-		
+		FragmentTransaction trans = getFragmentManager().beginTransaction();
+		trans.replace(R.id.slidingpane_menu, menuFragment);
+		trans.commit();
 	}
 
 	@Override
