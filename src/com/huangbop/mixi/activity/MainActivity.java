@@ -4,6 +4,7 @@ import com.huangbop.mixi.R;
 import com.huangbop.mixi.R.id;
 import com.huangbop.mixi.R.layout;
 import com.huangbop.mixi.R.menu;
+import com.huangbop.mixi.fragment.ContentFragment;
 import com.huangbop.mixi.fragment.MenuFragment;
 import com.huangbop.mixi.utils.InjectView;
 import com.huangbop.mixi.utils.Injector;
@@ -22,6 +23,7 @@ public class MainActivity extends Activity {
 	private SlidingPaneLayout slidingpanelayout;
 	
 	private MenuFragment menuFragment;
+	private ContentFragment contentFragment;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +33,11 @@ public class MainActivity extends Activity {
 		Injector.get(this).inject();
 
 		menuFragment = new MenuFragment();
+		contentFragment = new ContentFragment();
 		
 		FragmentTransaction trans = getFragmentManager().beginTransaction();
 		trans.replace(R.id.slidingpane_menu, menuFragment);
+		trans.replace(R.id.slidingpane_content, contentFragment);
 		trans.commit();
 	}
 
