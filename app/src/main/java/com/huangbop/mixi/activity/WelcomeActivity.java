@@ -1,13 +1,13 @@
 package com.huangbop.mixi.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
 import com.huangbop.mixi.R;
+import com.huangbop.mixi.base.BaseActivity;
 
-public class WelcomeActivity extends Activity {
+public class WelcomeActivity extends BaseActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

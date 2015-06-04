@@ -1,19 +1,26 @@
 package com.huangbop.mixi.activity;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.huangbop.mixi.R;
+import com.huangbop.mixi.base.BaseActivity;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity {
+
+  private long preTime = 0;
+  private Context context;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+    context = this;
   }
 
   @Override
@@ -37,4 +44,24 @@ public class MainActivity extends Activity {
 
     return super.onOptionsItemSelected(item);
   }
+
+  @Override
+  public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+    if (keyCode == KeyEvent.KEYCODE_BACK) {
+      long currentTime = System.currentTimeMillis();
+
+      if ((currentTime - preTime) > 2000) {
+        toastShort(context, "再按一次退出咪西");
+        preTime = currentTime;
+      } else {
+        finish();
+      }
+
+      return true;
+    }
+
+    return super.onKeyDown(keyCode, event);
+  }
+
 }
