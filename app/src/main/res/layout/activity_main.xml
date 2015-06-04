@@ -16,5 +16,12 @@
             layout="@layout/fragment_header"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"/>
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            layout="@layout/fragment_bottom"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 </RelativeLayout>
