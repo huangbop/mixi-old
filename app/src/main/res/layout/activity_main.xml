@@ -15,13 +15,24 @@
             android:layout_height="50dp"
             layout="@layout/fragment_header"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:id="@+id/include2"/>
 
         <include
             android:layout_width="match_parent"
             android:layout_height="50dp"
             layout="@layout/fragment_bottom"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:id="@+id/include"/>
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/fragment_product"
+            android:layout_below="@+id/include2"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/include"/>
+
     </RelativeLayout>
 </RelativeLayout>
