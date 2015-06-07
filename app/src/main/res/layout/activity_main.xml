@@ -10,29 +10,34 @@
         android:layout_height="match_parent"
         android:background="@drawable/shape_bg_main">
 
-        <include
+        <fragment
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            layout="@layout/fragment_header"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/include2"/>
-
-        <include
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            layout="@layout/fragment_bottom"
+            android:name="com.huangbop.mixi.fragment.BottomFragment"
+            android:id="@+id/fragment"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:id="@+id/include"/>
+            tools:layout="@layout/fragment_bottom"/>
 
-        <include
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:name="com.huangbop.mixi.fragment.HeaderFragment"
+            android:id="@+id/fragment2"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            tools:layout="@layout/fragment_header"/>
+
+        <fragment
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/fragment_product"
-            android:layout_below="@+id/include2"
+            android:name="com.huangbop.mixi.fragment.ProductFragment"
+            android:id="@+id/fragment3"
+            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:layout_above="@+id/include"/>
+            android:layout_below="@+id/fragment2"
+            android:layout_above="@+id/fragment"
+            tools:layout="@layout/fragment_product"/>
 
     </RelativeLayout>
 </RelativeLayout>
