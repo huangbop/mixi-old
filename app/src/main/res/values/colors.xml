@@ -3,5 +3,6 @@
 
     <color name="main_font">#505050</color>/>
     <color name="main_icon">#505050</color>
+    <color name="main_bg">#e0e0e0</color>
 
 </resources>

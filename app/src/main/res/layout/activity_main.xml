@@ -13,31 +13,47 @@
         <fragment
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:name="com.huangbop.mixi.fragment.BottomFragment"
-            android:id="@+id/fragment"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            tools:layout="@layout/fragment_bottom"/>
-
-        <fragment
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
             android:name="com.huangbop.mixi.fragment.HeaderFragment"
-            android:id="@+id/fragment2"
+            android:id="@+id/header"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             tools:layout="@layout/fragment_header"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/textView2"
+            android:layout_below="@+id/header"
+            android:layout_centerHorizontal="true"
+            android:background="@color/main_bg"/>
 
         <fragment
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:name="com.huangbop.mixi.fragment.ProductFragment"
-            android:id="@+id/fragment3"
-            android:layout_centerVertical="true"
+            android:id="@+id/product"
+            tools:layout="@layout/fragment_product"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:layout_below="@+id/textView2"
+            android:layout_above="@+id/textView3"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/textView3"
+            android:layout_above="@+id/bottom"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/fragment2"
-            android:layout_above="@+id/fragment"
-            tools:layout="@layout/fragment_product"/>
+            android:background="@color/main_bg"/>
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:name="com.huangbop.mixi.fragment.BottomFragment"
+            android:id="@+id/bottom"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            tools:layout="@layout/fragment_bottom"/>
 
     </RelativeLayout>
 </RelativeLayout>
