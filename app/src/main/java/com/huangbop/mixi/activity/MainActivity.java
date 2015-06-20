@@ -52,7 +52,7 @@ public class MainActivity extends BaseActivity {
       long currentTime = System.currentTimeMillis();
 
       if ((currentTime - preTime) > 2000) {
-        toastShort(context, "@string/app_name");
+        toastShort(context, "再按一次退出咪西");
         preTime = currentTime;
       } else {
         finish();

@@ -7,9 +7,9 @@ import cn.bmob.v3.datatype.BmobFile;
  * Created by Administrator on 2015/6/19.
  */
 public class Product extends BmobObject {
-  String name;
-  Integer price;
-  BmobFile image;
+  public String name;
+  public Integer price;
+  public BmobFile image;
 
   public void setName(String name) {
     this.name = name;

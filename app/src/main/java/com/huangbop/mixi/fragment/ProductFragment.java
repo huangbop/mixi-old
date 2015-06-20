@@ -34,8 +34,6 @@ public class ProductFragment extends Fragment {
   Context context;
   ProductAdapter productAdapter;
 
-  ArrayList<String> products = new ArrayList<>();
-
   public ProductFragment() {
     // Required empty public constructor
   }
@@ -48,11 +46,9 @@ public class ProductFragment extends Fragment {
     View currentView = inflater.inflate(R.layout.fragment_product, container, false);
     ButterKnife.inject(this, currentView);
 
-    getProducts();
-
     context = getActivity();
-    productAdapter = new ProductAdapter(context, products);
-    productList.setAdapter(productAdapter);
+
+
 
     // test
     BmobQuery<Product> query = new BmobQuery<>();
@@ -61,6 +57,8 @@ public class ProductFragment extends Fragment {
       public void onSuccess(List<Product> products) {
         Toast.makeText(context, "query OK" + products.size(), Toast.LENGTH_SHORT).show();
 
+        productAdapter = new ProductAdapter(context, products);
+        productList.setAdapter(productAdapter);
       }
 
       @Override
@@ -74,10 +72,6 @@ public class ProductFragment extends Fragment {
     return currentView;
   }
 
-  private void getProducts() {
-    for (int i = 0; i < 100; i++) {
-      products.add("xxx");
-    }
-  }
+
 
 }
