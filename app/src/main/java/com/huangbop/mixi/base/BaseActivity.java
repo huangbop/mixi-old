@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import cn.bmob.v3.Bmob;
+
 /**
  * Created by Administrator on 2015/6/5.
  */
@@ -15,6 +17,8 @@ public class BaseActivity extends Activity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
+    Bmob.initialize(this, "551f8336bef3059233ec08d7b01cd989");
   }
 
   protected void toastShort(Context context, CharSequence message) {

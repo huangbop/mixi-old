@@ -5,6 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
     <string name="welcome_copyright">Copyright © 2015 mixi.today</string>
+    <string name="prompt_to_exit">再按一次退出咪西</string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
