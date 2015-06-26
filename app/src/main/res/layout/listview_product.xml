@@ -3,23 +3,46 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:background="@mipmap/card_background"
-              android:orientation="horizontal">
+              android:orientation="horizontal"
+              android:focusable="true"
+              android:focusableInTouchMode="true"
+              android:padding="10dp">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:id="@+id/product_image"
         android:layout_gravity="center_vertical"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@mipmap/ic_launcher"
+        android:background="@drawable/shape_bg_image"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        android:layout_marginLeft="10dp"/>
 
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Information"
-        android:id="@+id/product_information"
-        android:layout_gravity="center_vertical"
-        android:textColor="@color/main_font"
-        android:textSize="30sp"
-        android:gravity="center"/>
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="name"
+            android:id="@+id/product_name"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/main_font"
+            android:textSize="20sp"
+            android:gravity="left|center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="¥: 100"
+            android:id="@+id/product_price"
+            android:gravity="left|center"
+            android:textColor="@color/main_red"/>
+
+    </LinearLayout>
 </LinearLayout>
 

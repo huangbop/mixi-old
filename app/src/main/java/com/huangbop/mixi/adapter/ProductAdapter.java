@@ -22,9 +22,11 @@ public class ProductAdapter extends BaseAdapter {
 
   LayoutInflater inflater;
   List<Product> products;
+  Context context;
 
   public ProductAdapter(Context context, List<Product> products) {
     inflater = LayoutInflater.from(context);
+    this.context = context;
     this.products = products;
   }
 
@@ -51,21 +53,26 @@ public class ProductAdapter extends BaseAdapter {
     if (convertView == null) {
       convertView = inflater.inflate(R.layout.listview_product, null);
       holder = new ViewHolder();
-      holder.product_image = (ImageView) convertView.findViewById(R.id.product_image);
-      holder.product_name = (TextView) convertView.findViewById(R.id.product_information);
+      holder.image = (ImageView) convertView.findViewById(R.id.product_image);
+      holder.name = (TextView) convertView.findViewById(R.id.product_name);
+      holder.price = (TextView) convertView.findViewById(R.id.product_price);
       convertView.setTag(holder);
     } else {
       holder = (ViewHolder) convertView.getTag();
     }
 
     Product p = products.get(position);
-    holder.product_name.setText(p.name);
+    holder.name.setText(p.name);
+    holder.price.setText("¥: " + p.price);
+    p.image.loadImage(context, holder.image);
 
     return convertView;
   }
 
   class ViewHolder {
-    ImageView product_image;
-    TextView product_name;
+    ImageView image;
+    TextView name;
+    TextView price;
+
   }
 }

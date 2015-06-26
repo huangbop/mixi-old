@@ -48,9 +48,6 @@ public class ProductFragment extends Fragment {
 
     context = getActivity();
 
-
-
-    // test
     BmobQuery<Product> query = new BmobQuery<>();
     query.findObjects(context, new FindListener<Product>() {
       @Override
@@ -67,11 +64,7 @@ public class ProductFragment extends Fragment {
       }
     });
 
-    //
-
     return currentView;
   }
-
-
 
 }
