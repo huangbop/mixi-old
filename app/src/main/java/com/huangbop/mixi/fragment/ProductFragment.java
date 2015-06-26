@@ -1,9 +1,9 @@
 package com.huangbop.mixi.fragment;
 
 
+import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +14,16 @@ import com.huangbop.mixi.R;
 import com.huangbop.mixi.adapter.ProductAdapter;
 import com.huangbop.mixi.data.Product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.SaveListener;
+import in.srain.cube.views.ptr.PtrClassicFrameLayout;
+import in.srain.cube.views.ptr.PtrDefaultHandler;
+import in.srain.cube.views.ptr.PtrFrameLayout;
+import in.srain.cube.views.ptr.PtrHandler;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +32,9 @@ public class ProductFragment extends Fragment {
 
   @InjectView(R.id.productList)
   ListView productList;
+
+  @InjectView(R.id.productFrame)
+  PtrClassicFrameLayout productFrame;
 
   Context context;
   ProductAdapter productAdapter;
@@ -48,12 +53,36 @@ public class ProductFragment extends Fragment {
 
     context = getActivity();
 
+    // ptr
+    productFrame.setLastUpdateTimeRelateObject(this);
+    productFrame.setPtrHandler(new PtrHandler() {
+      @Override
+      public boolean checkCanDoRefresh(PtrFrameLayout ptrFrameLayout, View view, View view1) {
+        return PtrDefaultHandler.checkContentCanBePulledDown(ptrFrameLayout, view, view1);
+      }
+
+      @Override
+      public void onRefreshBegin(PtrFrameLayout ptrFrameLayout) {
+        updateData();
+      }
+    });
+    productFrame.postDelayed(new Runnable() {
+      @Override
+      public void run() {
+        productFrame.autoRefresh();
+      }
+    }, 1000);
+
+
+    return currentView;
+  }
+
+  private void updateData() {
     BmobQuery<Product> query = new BmobQuery<>();
     query.findObjects(context, new FindListener<Product>() {
       @Override
       public void onSuccess(List<Product> products) {
-        Toast.makeText(context, "query OK" + products.size(), Toast.LENGTH_SHORT).show();
-
+        productFrame.refreshComplete();
         productAdapter = new ProductAdapter(context, products);
         productList.setAdapter(productAdapter);
       }
@@ -64,7 +93,6 @@ public class ProductFragment extends Fragment {
       }
     });
 
-    return currentView;
   }
 
 }
