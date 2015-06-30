@@ -90,6 +90,7 @@ public class ProductFragment extends Fragment {
       @Override
       public void onError(int i, String s) {
         Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
+        productFrame.refreshComplete();
       }
     });
 
