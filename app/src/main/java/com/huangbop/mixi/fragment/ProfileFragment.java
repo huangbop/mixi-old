@@ -12,10 +12,10 @@ import com.huangbop.mixi.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BottomFragment extends Fragment {
+public class ProfileFragment extends Fragment {
 
 
-  public BottomFragment() {
+  public ProfileFragment() {
     // Required empty public constructor
   }
 
@@ -24,7 +24,7 @@ public class BottomFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    return inflater.inflate(R.layout.fragment_bottom, container, false);
+    return inflater.inflate(R.layout.fragment_profile, container, false);
   }
 
 

@@ -3,6 +3,7 @@ package com.huangbop.mixi.base;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
 import cn.bmob.v3.Bmob;
@@ -10,7 +11,7 @@ import cn.bmob.v3.Bmob;
 /**
  * Created by Administrator on 2015/6/5.
  */
-public class BaseActivity extends Activity {
+public class BaseActivity extends FragmentActivity {
 
   private Toast toast;
 

@@ -2,12 +2,21 @@ package com.huangbop.mixi.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
+import android.widget.RadioGroup;
 
 import com.huangbop.mixi.R;
 import com.huangbop.mixi.base.BaseActivity;
+import com.huangbop.mixi.fragment.ProductFragment;
+
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 
 public class MainActivity extends BaseActivity {
@@ -15,12 +24,53 @@ public class MainActivity extends BaseActivity {
   private long preTime = 0;
   private Context context;
 
+  @InjectView(R.id.mainContent)
+  FrameLayout mainContent;
+
+  @InjectView(R.id.tabsGroup)
+  RadioGroup tabsGroup;
+
+  static final int nr_fragment = 3;
+
+  FragmentStatePagerAdapter fragments = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
+    @Override
+    public Fragment getItem(int position) {
+      Fragment fragment = null;
+
+      switch (position) {
+        case 0:
+          fragment = new ProductFragment();
+          break;
+
+        case 1:
+          break;
+
+        case 2:
+          break;
+
+        default:
+          fragment = new ProductFragment();
+          break;
+      }
+
+      return fragment;
+    }
+
+    @Override
+    public int getCount() {
+      return nr_fragment;
+    }
+  };
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    ButterKnife.inject(this);
 
     context = this;
+
+
   }
 
   @Override

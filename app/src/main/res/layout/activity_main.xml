@@ -10,50 +10,66 @@
         android:layout_height="match_parent"
         android:background="@drawable/shape_bg_main">
 
+
         <fragment
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:name="com.huangbop.mixi.fragment.HeaderFragment"
             android:id="@+id/header"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            tools:layout="@layout/fragment_header"/>
+            android:layout_gravity="center_horizontal|top"
+            tools:layout="@layout/fragment_header"
+            android:layout_alignParentTop="true"/>
 
-        <TextView
+        <FrameLayout
+            android:id="@+id/mainContent"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:id="@+id/textView2"
-            android:layout_below="@+id/header"
-            android:layout_centerHorizontal="true"
-            android:background="@color/main_bg"/>
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_above="@+id/tabsGroup"
+            android:layout_below="@+id/header">
 
-        <fragment
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:name="com.huangbop.mixi.fragment.ProductFragment"
-            android:id="@+id/product"
-            tools:layout="@layout/fragment_product"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:layout_below="@+id/textView2"
-            android:layout_above="@+id/textView3"/>
+        </FrameLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:id="@+id/textView3"
-            android:layout_above="@+id/bottom"
-            android:layout_centerHorizontal="true"
-            android:background="@color/main_bg"/>
-
-        <fragment
+        <RadioGroup
+            android:id="@+id/tabsGroup"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:name="com.huangbop.mixi.fragment.BottomFragment"
-            android:id="@+id/bottom"
+            android:orientation="horizontal"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            tools:layout="@layout/fragment_bottom"/>
+            android:background="@drawable/shape_bg_bottom"
+            android:paddingTop="4dp">
+
+            <RadioButton
+                android:id="@+id/tabHome"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/tab_home"
+                android:drawableTop="@drawable/selector_tab_home"
+                android:button="@null"/>
+
+            <RadioButton
+                android:id="@+id/tabOrder"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/tab_order"
+                android:drawableTop="@drawable/selector_tab_order"
+                android:gravity="center"
+                android:button="@null"/>
+
+            <RadioButton
+                android:id="@+id/tabProfile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/tab_profile"
+                android:drawableTop="@drawable/selector_tab_profile"
+                android:gravity="center"
+                android:button="@null"/>
+        </RadioGroup>
 
     </RelativeLayout>
+
 </RelativeLayout>
