@@ -15,6 +15,7 @@ import com.huangbop.mixi.base.BaseActivity;
 import com.huangbop.mixi.fragment.OrderFragment;
 import com.huangbop.mixi.fragment.ProductFragment;
 import com.huangbop.mixi.fragment.ProfileFragment;
+import com.umeng.update.UmengUpdateAgent;
 
 
 import butterknife.ButterKnife;
@@ -71,6 +72,9 @@ public class MainActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     ButterKnife.inject(this);
+
+    // Auto update
+    UmengUpdateAgent.update(this);
 
     context = this;
 
