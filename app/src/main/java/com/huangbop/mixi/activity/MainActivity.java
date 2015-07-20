@@ -12,7 +12,9 @@ import android.widget.RadioGroup;
 
 import com.huangbop.mixi.R;
 import com.huangbop.mixi.base.BaseActivity;
+import com.huangbop.mixi.fragment.OrderFragment;
 import com.huangbop.mixi.fragment.ProductFragment;
+import com.huangbop.mixi.fragment.ProfileFragment;
 
 
 import butterknife.ButterKnife;
@@ -43,9 +45,11 @@ public class MainActivity extends BaseActivity {
           break;
 
         case 1:
+          fragment = new OrderFragment();
           break;
 
         case 2:
+          fragment = new ProfileFragment();
           break;
 
         default:
@@ -70,7 +74,38 @@ public class MainActivity extends BaseActivity {
 
     context = this;
 
+    tabsGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+      @Override
+      public void onCheckedChanged(RadioGroup group, int checkedId) {
+        int index = 0;
+        switch (checkedId) {
+          case R.id.tabHome:
+            index = 0;
+            break;
+          case R.id.tabOrder:
+            index = 1;
+            break;
+          case R.id.tabProfile:
+            index = 2;
+            break;
+          default:
+            index = 0;
+            break;
+        }
 
+        Fragment fragment = (Fragment)fragments.instantiateItem(mainContent, index);
+        fragments.setPrimaryItem(mainContent, 0, fragment);
+        fragments.finishUpdate(mainContent);
+      }
+    });
+
+
+  }
+
+  @Override
+  protected void onStart() {
+    super.onStart();
+    tabsGroup.check(R.id.tabHome);
   }
 
   @Override
