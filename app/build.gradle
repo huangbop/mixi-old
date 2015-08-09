@@ -1,0 +1,38 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "22.0.1"
+    defaultConfig {
+        applicationId "com.huangbop.mixi"
+        minSdkVersion 15
+        targetSdkVersion 21
+        versionName '1.4'
+        versionCode 14
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:22.1.1'
+    compile 'in.srain.cube:ultra-ptr:1.0.9'
+    compile 'com.jakewharton:butterknife:6.1.0'
+    compile files('libs/BmobSDK_V3.4.0_0616.jar')
+    compile 'com.makeramen:roundedimageview:2.1.1'
+    compile files('libs/umeng-update-v2.6.0.1.jar')
+}

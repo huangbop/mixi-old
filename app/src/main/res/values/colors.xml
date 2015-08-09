@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="main_font">#505050</color>/>
+    <color name="main_icon">#505050</color>
+    <color name="main_bg">#e0e0e0</color>
+    <color name="main_red">#c02020</color>
+
+</resources>
