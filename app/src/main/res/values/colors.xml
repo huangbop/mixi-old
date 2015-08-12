@@ -2,8 +2,8 @@
 <resources>
 
     <color name="main_font">#505050</color>/>
-    <color name="main_icon">#505050</color>
-    <color name="main_bg">#e0e0e0</color>
+    <color name="main_icon">#c0c0c0</color>
+    <color name="main_bg">#f0f0f0</color>
     <color name="main_red">#c02020</color>
 
 </resources>
