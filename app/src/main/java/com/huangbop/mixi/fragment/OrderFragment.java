@@ -14,7 +14,11 @@ import android.widget.TextView;
 
 import com.huangbop.mixi.R;
 import com.huangbop.mixi.api.gitapi;
+import com.huangbop.mixi.model.SnippetModel;
 import com.huangbop.mixi.model.gitmodel;
+import com.huangbop.mixi.network.SnippetApi;
+
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -54,25 +58,44 @@ public class OrderFragment extends Fragment {
     click.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        String user = edit_user.getText().toString();
-
-        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(API).build();
-        gitapi api = restAdapter.create(gitapi.class);
-
-        api.getFeed(user, new Callback<gitmodel>() {
+        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("http://mixi.today/api/v1").build();
+        SnippetApi snippetApi = restAdapter.create(SnippetApi.class);
+        snippetApi.getData(new Callback<List<SnippetModel>>() {
           @Override
-          public void success(gitmodel gitmodel, Response response) {
-            Integer i = 0;
+          public void success(List<SnippetModel> snippetModels, Response response) {
+            int i = 0;
           }
 
           @Override
           public void failure(RetrofitError error) {
-            Integer i = 0;
+            int i = 0;
           }
         });
-
       }
     });
+
+//    click.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        String user = edit_user.getText().toString();
+//
+//        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(API).build();
+//        gitapi api = restAdapter.create(gitapi.class);
+//
+//        api.getFeed(user, new Callback<gitmodel>() {
+//          @Override
+//          public void success(gitmodel gitmodel, Response response) {
+//            Integer i = 0;
+//          }
+//
+//          @Override
+//          public void failure(RetrofitError error) {
+//            Integer i = 0;
+//          }
+//        });
+//
+//      }
+//    });
 
     return currentView;
   }

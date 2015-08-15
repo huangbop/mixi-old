@@ -4,20 +4,20 @@ import android.graphics.Bitmap;
 
 public class Flower {
 
-  private int productId;
+//  private int productId;
   private String name;
   private String category;
-  private String instructions;
-  private double price;
+//  private String instructions;
+//  private double price;
   private String photo;
   private Bitmap bitmap;
 
-  public int getProductId() {
-    return productId;
-  }
-  public void setProductId(int productId) {
-    this.productId = productId;
-  }
+//  public int getProductId() {
+//    return productId;
+//  }
+//  public void setProductId(int productId) {
+//    this.productId = productId;
+//  }
   public String getName() {
     return name;
   }
@@ -30,18 +30,18 @@ public class Flower {
   public void setCategory(String category) {
     this.category = category;
   }
-  public String getInstructions() {
-    return instructions;
-  }
-  public void setInstructions(String instructions) {
-    this.instructions = instructions;
-  }
-  public double getPrice() {
-    return price;
-  }
-  public void setPrice(double price) {
-    this.price = price;
-  }
+//  public String getInstructions() {
+//    return instructions;
+//  }
+//  public void setInstructions(String instructions) {
+//    this.instructions = instructions;
+//  }
+//  public double getPrice() {
+//    return price;
+//  }
+//  public void setPrice(double price) {
+//    this.price = price;
+//  }
   public String getPhoto() {
     return photo;
   }
