@@ -1,6 +1,7 @@
 package com.huangbop.mixi.adapter;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,31 +10,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.huangbop.mixi.R;
-import com.huangbop.mixi.data.Product;
-
-import org.w3c.dom.Text;
+import com.huangbop.mixi.model.ProductModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-/**
- * Created by Administrator on 2015/6/7.
- */
 public class ProductAdapter extends BaseAdapter {
 
-  LayoutInflater inflater;
-  List<Product> products;
-  Context context;
+  private final Context context;
+  private List<ProductModel> productModels;
 
-  public ProductAdapter(Context context, List<Product> products) {
-    inflater = LayoutInflater.from(context);
+  public ProductAdapter(Context context, List<ProductModel> productModels) {
     this.context = context;
-    this.products = products;
+    this.productModels = productModels;
   }
-
 
   @Override
   public int getCount() {
-    return products.size();
+    return productModels.size();
   }
 
   @Override
@@ -43,31 +37,39 @@ public class ProductAdapter extends BaseAdapter {
 
   @Override
   public long getItemId(int position) {
-    return 0;
+    return position;
   }
 
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
-    ViewHolder holder;
+    ImageView imageView;
+    TextView textView;
 
     if (convertView == null) {
-      convertView = inflater.inflate(R.layout.listview_product, null);
-      holder = new ViewHolder();
-      holder.image = (ImageView) convertView.findViewById(R.id.product_image);
-      holder.name = (TextView) convertView.findViewById(R.id.product_name);
+      convertView = LayoutInflater.from(context).inflate(R.layout.listview_product, parent, false);
 
-      convertView.setTag(holder);
+      imageView = (ImageView) convertView.findViewById(R.id.product_image);
+      textView = (TextView) convertView.findViewById(R.id.product_name);
+      convertView.setTag(new ViewHolder(imageView, textView));
     } else {
-      holder = (ViewHolder) convertView.getTag();
+      ViewHolder viewHolder = (ViewHolder) convertView.getTag();
+      imageView = viewHolder.imageView;
+      textView = viewHolder.textView;
     }
+
+    Picasso.with(context).load(productModels.get(position).getImage()).into(imageView);
+    textView.setText(productModels.get(position).getTitle());
 
     return convertView;
   }
 
-  class ViewHolder {
-    ImageView image;
-    TextView name;
-    TextView price;
+  private static class ViewHolder {
+    public final TextView textView;
+    public final ImageView imageView;
 
+    public ViewHolder(ImageView imageView, TextView textView) {
+      this.imageView = imageView;
+      this.textView = textView;
+    }
   }
 }

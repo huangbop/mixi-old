@@ -18,17 +18,13 @@
         cube_ptr:ptr_resistance="1.7">
 
         <ListView
-            android:id="@+id/productList"
+            android:id="@+id/product_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="@null">
+            >
 
         </ListView>
 
-
     </in.srain.cube.views.ptr.PtrClassicFrameLayout>
-
-
-
 
 </RelativeLayout>

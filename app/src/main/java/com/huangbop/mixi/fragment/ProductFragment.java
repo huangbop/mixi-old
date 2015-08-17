@@ -35,7 +35,7 @@ import retrofit.client.Response;
  */
 public class ProductFragment extends Fragment {
 
-  @InjectView(R.id.productList)
+  @InjectView(R.id.product_list)
   ListView productList;
 
   @InjectView(R.id.productFrame)
@@ -94,7 +94,9 @@ public class ProductFragment extends Fragment {
       @Override
       public void success(List<ProductModel> productModels, Response response) {
         productFrame.refreshComplete();
-        int i = 0;
+
+        productAdapter = new ProductAdapter(context, productModels);
+        productList.setAdapter(productAdapter);
       }
 
       @Override
