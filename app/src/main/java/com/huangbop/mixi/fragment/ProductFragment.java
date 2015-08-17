@@ -13,17 +13,22 @@ import android.widget.Toast;
 import com.huangbop.mixi.R;
 import com.huangbop.mixi.adapter.ProductAdapter;
 import com.huangbop.mixi.data.Product;
+import com.huangbop.mixi.model.ProductModel;
+import com.huangbop.mixi.network.MixiApi;
+import com.huangbop.mixi.network.SnippetApi;
 
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.listener.FindListener;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,6 +44,9 @@ public class ProductFragment extends Fragment {
   Context context;
   ProductAdapter productAdapter;
 
+  RestAdapter restAdapter;
+  MixiApi mixiApi;
+
   public ProductFragment() {
     // Required empty public constructor
   }
@@ -53,6 +61,9 @@ public class ProductFragment extends Fragment {
 
     context = getActivity();
 
+    restAdapter = new RestAdapter.Builder().setEndpoint("http://mixi.today/api/v1").build();
+    mixiApi = restAdapter.create(MixiApi.class);
+
     // ptr
     productFrame.setLastUpdateTimeRelateObject(this);
     productFrame.setPtrHandler(new PtrHandler() {
@@ -66,6 +77,7 @@ public class ProductFragment extends Fragment {
         updateData();
       }
     });
+
     productFrame.postDelayed(new Runnable() {
       @Override
       public void run() {
@@ -73,24 +85,22 @@ public class ProductFragment extends Fragment {
       }
     }, 1000);
 
-
     return currentView;
   }
 
   private void updateData() {
-    BmobQuery<Product> query = new BmobQuery<>();
-    query.findObjects(context, new FindListener<Product>() {
+
+    mixiApi.getProduct(new Callback<List<ProductModel>>() {
       @Override
-      public void onSuccess(List<Product> products) {
+      public void success(List<ProductModel> productModels, Response response) {
         productFrame.refreshComplete();
-        productAdapter = new ProductAdapter(context, products);
-        productList.setAdapter(productAdapter);
+        int i = 0;
       }
 
       @Override
-      public void onError(int i, String s) {
-        Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
+      public void failure(RetrofitError error) {
         productFrame.refreshComplete();
+        int i = 0;
       }
     });
 
@@ -103,6 +113,4 @@ public class ProductFragment extends Fragment {
       this.getView().setVisibility(menuVisible ? View.VISIBLE : View.GONE);
     }
   }
-
-
 }

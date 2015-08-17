@@ -55,16 +55,11 @@ public class ProductAdapter extends BaseAdapter {
       holder = new ViewHolder();
       holder.image = (ImageView) convertView.findViewById(R.id.product_image);
       holder.name = (TextView) convertView.findViewById(R.id.product_name);
-      holder.price = (TextView) convertView.findViewById(R.id.product_price);
+
       convertView.setTag(holder);
     } else {
       holder = (ViewHolder) convertView.getTag();
     }
-
-    Product p = products.get(position);
-    holder.name.setText(p.name);
-    holder.price.setText("¥: " + p.price);
-    p.image.loadImage(context, holder.image);
 
     return convertView;
   }
