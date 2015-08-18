@@ -1,25 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="90dp"
               android:orientation="horizontal"
               android:background="#ffffff"
-              android:padding="10dp">
+              android:padding="8dp">
 
     <com.makeramen.roundedimageview.RoundedImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_height="70dp"
+        android:layout_height="match_parent"
         android:layout_width="90dp"
         android:id="@+id/product_image"
         android:scaleType="centerCrop"
         app:riv_corner_radius="4dp"
-        android:src="@mipmap/ic_launcher"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:id="@+id/product_name"
+        android:src="@mipmap/ic_launcher"
         />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="12dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/product_name"
+            android:text="title"
+            android:textSize="15sp"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="description"
+            android:id="@+id/product_desc"
+            android:textColor="@color/main_font"
+            android:textSize="12sp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¥"
+                    android:id="@+id/textView3"
+                    android:textColor="@color/main_red"
+                    android:textSize="10sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:id="@+id/textView2"
+                    android:textColor="@color/main_red"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="match_parent">
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
 
