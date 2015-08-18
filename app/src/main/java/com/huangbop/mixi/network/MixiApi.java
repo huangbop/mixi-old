@@ -10,6 +10,6 @@ import retrofit.http.GET;
 
 public interface MixiApi {
 
-  @GET("/snippets/?format=json")
+  @GET("/products/?format=json")
   public void getProduct (Callback<List<ProductModel>> response);
 }

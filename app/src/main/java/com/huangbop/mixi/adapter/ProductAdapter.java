@@ -43,18 +43,24 @@ public class ProductAdapter extends BaseAdapter {
 
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
-    ImageView imageView;
-    TextView textView;
+    ImageView image;
+    TextView title;
+    TextView description;
+    TextView price;
 
     if (convertView == null) {
       convertView = LayoutInflater.from(context).inflate(R.layout.listview_product, parent, false);
     }
 
-    imageView = ViewHolder.get(convertView, R.id.product_image);
-    textView = ViewHolder.get(convertView, R.id.product_name);
+    image = ViewHolder.get(convertView, R.id.product_image);
+    title = ViewHolder.get(convertView, R.id.product_name);
+    description = ViewHolder.get(convertView, R.id.product_desc);
+    price = ViewHolder.get(convertView, R.id.product_price);
 
-    Picasso.with(context).load(productModels.get(position).getImage()).into(imageView);
-    textView.setText(productModels.get(position).getTitle());
+    Picasso.with(context).load(productModels.get(position).getImage()).into(image);
+    title.setText(productModels.get(position).getTitle());
+    description.setText(productModels.get(position).getDescription());
+    price.setText(Double.toString(productModels.get(position).getPrice()));
 
     return convertView;
   }
