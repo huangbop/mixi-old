@@ -53,16 +53,19 @@
                 android:layout_height="match_parent"
                 >
                 <ImageView
+                    android:id="@+id/is_pep"
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:src="@mipmap/is_pep"/>
                 <ImageView
+                    android:id="@+id/is_hot"
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:src="@mipmap/is_hot"
                     android:layout_marginLeft="2dp"
                     />
                 <ImageView
+                    android:id="@+id/is_new"
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:src="@mipmap/is_new"

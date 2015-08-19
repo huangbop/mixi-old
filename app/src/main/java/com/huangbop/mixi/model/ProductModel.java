@@ -27,4 +27,15 @@ public class ProductModel {
     return price;
   }
 
+  public boolean isPep() {
+    return is_pep;
+  }
+
+  public boolean isHot() {
+    return is_hot;
+  }
+
+  public boolean isNew() {
+    return is_new;
+  }
 }

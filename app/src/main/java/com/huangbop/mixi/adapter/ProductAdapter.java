@@ -43,24 +43,44 @@ public class ProductAdapter extends BaseAdapter {
 
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
-    ImageView image;
-    TextView title;
-    TextView description;
-    TextView price;
+    ImageView ivImage;
+    TextView tvTitle;
+    TextView tvDesc;
+    TextView tvPrice;
+    ImageView ivIsPep;
+    ImageView ivIsHot;
+    ImageView ivIsNew;
+    double price;
+    ProductModel product;
 
     if (convertView == null) {
       convertView = LayoutInflater.from(context).inflate(R.layout.listview_product, parent, false);
     }
 
-    image = ViewHolder.get(convertView, R.id.product_image);
-    title = ViewHolder.get(convertView, R.id.product_name);
-    description = ViewHolder.get(convertView, R.id.product_desc);
-    price = ViewHolder.get(convertView, R.id.product_price);
+    ivImage = ViewHolder.get(convertView, R.id.product_image);
+    tvTitle = ViewHolder.get(convertView, R.id.product_name);
+    tvDesc = ViewHolder.get(convertView, R.id.product_desc);
+    tvPrice = ViewHolder.get(convertView, R.id.product_price);
+    ivIsPep = ViewHolder.get(convertView, R.id.is_pep);
+    ivIsHot = ViewHolder.get(convertView, R.id.is_hot);
+    ivIsNew = ViewHolder.get(convertView, R.id.is_new);
 
-    Picasso.with(context).load(productModels.get(position).getImage()).into(image);
-    title.setText(productModels.get(position).getTitle());
-    description.setText(productModels.get(position).getDescription());
-    price.setText(Double.toString(productModels.get(position).getPrice()));
+    product = productModels.get(position);
+    Picasso.with(context).load(product.getImage()).into(ivImage);
+    tvTitle.setText(product.getTitle());
+    tvDesc.setText(product.getDescription());
+    price = product.getPrice();
+    if (price % 1.0 == 0)
+      tvPrice.setText(Long.toString((long)price));
+    else
+      tvPrice.setText(Double.toString(price));
+
+    if (!product.isPep())
+      ivIsPep.setVisibility(View.INVISIBLE);
+    if (!product.isHot())
+      ivIsHot.setVisibility(View.INVISIBLE);
+    if (!product.isNew())
+      ivIsNew.setVisibility(View.INVISIBLE);
 
     return convertView;
   }
