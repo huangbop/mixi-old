@@ -50,11 +50,25 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                >
                 <ImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:src="@mipmap/is_new"/>
+                    android:src="@mipmap/is_pep"/>
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@mipmap/is_hot"
+                    android:layout_marginLeft="2dp"
+                    />
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@mipmap/is_new"
+                    android:layout_marginLeft="2dp"
+                    />
+
             </LinearLayout>
         </LinearLayout>
 
