@@ -7,8 +7,8 @@ android {
         applicationId "com.huangbop.mixi"
         minSdkVersion 15
         targetSdkVersion 21
-        versionName '1.4'
-        versionCode 14
+        versionName '1.5'
+        versionCode 15
     }
     buildTypes {
         release {
