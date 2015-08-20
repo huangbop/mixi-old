@@ -27,10 +27,6 @@ import retrofit.client.Response;
 
 public class ProfileFragment extends Fragment {
 
-  List<Flower> flowerList;
-  @InjectView(R.id.list)
-  ListView list;
-
   public ProfileFragment() {
     // Required empty public constructor
   }
@@ -42,21 +38,6 @@ public class ProfileFragment extends Fragment {
     View currentView = inflater.inflate(R.layout.fragment_profile, container, false);
     ButterKnife.inject(this, currentView);
 
-    final RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("http://services.hanselandpetal.com").build();
-    api flowerapi = restAdapter.create(api.class);
-    flowerapi.getData(new Callback<List<Flower>>() {
-      @Override
-      public void success(List<Flower> flowers, Response response) {
-        flowerList = flowers;
-        FlowerAdapter adpt = new FlowerAdapter(getActivity(), R.layout.item_file, flowerList);
-        list.setAdapter(adpt);
-      }
-
-      @Override
-      public void failure(RetrofitError error) {
-        Toast.makeText(getActivity(), "Failed", Toast.LENGTH_SHORT).show();
-      }
-    });
 
     return currentView;
   }

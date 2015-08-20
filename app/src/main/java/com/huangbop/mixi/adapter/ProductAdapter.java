@@ -14,6 +14,7 @@ import com.huangbop.mixi.model.ProductModel;
 import com.huangbop.mixi.utilities.ViewHolder;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends BaseAdapter {
@@ -47,9 +48,9 @@ public class ProductAdapter extends BaseAdapter {
     TextView tvTitle;
     TextView tvDesc;
     TextView tvPrice;
-    ImageView ivIsPep;
-    ImageView ivIsHot;
-    ImageView ivIsNew;
+    ImageView[] ivBrands = new ImageView[3];
+    ArrayList<Integer> brandIDs = new ArrayList<>();
+
     double price;
     ProductModel product;
 
@@ -61,9 +62,9 @@ public class ProductAdapter extends BaseAdapter {
     tvTitle = ViewHolder.get(convertView, R.id.product_name);
     tvDesc = ViewHolder.get(convertView, R.id.product_desc);
     tvPrice = ViewHolder.get(convertView, R.id.product_price);
-    ivIsPep = ViewHolder.get(convertView, R.id.is_pep);
-    ivIsHot = ViewHolder.get(convertView, R.id.is_hot);
-    ivIsNew = ViewHolder.get(convertView, R.id.is_new);
+    ivBrands[0] = ViewHolder.get(convertView, R.id.brand0);
+    ivBrands[1] = ViewHolder.get(convertView, R.id.brand1);
+    ivBrands[2] = ViewHolder.get(convertView, R.id.brand2);
 
     product = productModels.get(position);
     Picasso.with(context).load(product.getImage()).into(ivImage);
@@ -75,9 +76,16 @@ public class ProductAdapter extends BaseAdapter {
     else
       tvPrice.setText(Double.toString(price));
 
-    ivIsPep.setVisibility(product.isPep() ? View.VISIBLE : View.INVISIBLE);
-    ivIsHot.setVisibility(product.isHot() ? View.VISIBLE : View.INVISIBLE);
-    ivIsNew.setVisibility(product.isNew() ? View.VISIBLE : View.INVISIBLE);
+    if (product.isHot())
+      brandIDs.add(R.mipmap.is_hot);
+    if (product.isPep())
+      brandIDs.add(R.mipmap.is_pep);
+    if (product.isNew())
+      brandIDs.add(R.mipmap.is_new);
+    for (int i = 0; i < ivBrands.length; i++)
+      ivBrands[i].setImageResource(R.mipmap.white);
+    for (int i = 0; i < brandIDs.size(); i++)
+      ivBrands[i].setImageResource(brandIDs.get(i));
 
     return convertView;
   }
