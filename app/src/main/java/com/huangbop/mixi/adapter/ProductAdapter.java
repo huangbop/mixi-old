@@ -75,12 +75,9 @@ public class ProductAdapter extends BaseAdapter {
     else
       tvPrice.setText(Double.toString(price));
 
-    if (!product.isPep())
-      ivIsPep.setVisibility(View.INVISIBLE);
-    if (!product.isHot())
-      ivIsHot.setVisibility(View.INVISIBLE);
-    if (!product.isNew())
-      ivIsNew.setVisibility(View.INVISIBLE);
+    ivIsPep.setVisibility(product.isPep() ? View.VISIBLE : View.INVISIBLE);
+    ivIsHot.setVisibility(product.isHot() ? View.VISIBLE : View.INVISIBLE);
+    ivIsNew.setVisibility(product.isNew() ? View.VISIBLE : View.INVISIBLE);
 
     return convertView;
   }
