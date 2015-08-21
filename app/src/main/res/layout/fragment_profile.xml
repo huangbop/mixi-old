@@ -8,30 +8,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:background="#ffffff"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
         >
         <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_alignParentLeft="true"
+            android:id="@+id/settings_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@mipmap/settings"
             android:layout_centerVertical="true"
-            android:src="@mipmap/is_new"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
             />
         <TextView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Settings"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/settings_icon"
+            android:layout_marginLeft="10dp"
             />
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"/>
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@mipmap/right"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>
 
