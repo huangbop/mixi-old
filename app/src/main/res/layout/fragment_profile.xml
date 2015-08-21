@@ -2,13 +2,33 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.huangbop.mixi.fragment.ProfileFragment">
-
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+             tools:context="com.huangbop.mixi.fragment.ProfileFragment"
+             android:background="@color/main_bg"
+    >
 
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="#ffffff"
+            android:layout_alignParentTop="true"
+            >
+            <Button
+                android:id="@+id/login"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:text="点击登录"
+
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
@@ -43,7 +63,7 @@
 
     </RelativeLayout>
 
-</RelativeLayout>
+    </RelativeLayout>
 
 
 
